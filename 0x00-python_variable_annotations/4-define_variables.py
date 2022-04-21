@@ -1,4 +1,7 @@
-from operator import truediv
+#!/usr/bin/env python3
+"""
+    Module with typing Python
+"""
 
 
 a: int = 1
