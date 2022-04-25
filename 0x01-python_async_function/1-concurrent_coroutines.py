@@ -4,8 +4,8 @@ asynchronous coroutine
 """
 
 
-import asyncio
 from typing import List
+import asyncio
 
 
 wait_random = __import__('0-basic_async_syntax').wait_random
@@ -19,7 +19,7 @@ async def wait_n(n: int, max_dealy: int) -> List[float]:
     You will spawn wait_random n times with the specified max_delay.
     """
     random_list = []
-    for x in range(n):
+    for _ in range(n):
         random_list.append(asyncio.create_task(wait_random(max_dealy)))
 
     task_list_ascompleted = []
