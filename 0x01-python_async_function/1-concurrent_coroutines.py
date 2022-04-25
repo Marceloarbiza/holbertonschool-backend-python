@@ -24,4 +24,11 @@ async def wait_n(n: int, max_dealy: int) -> List[float]:
         task1 = asyncio.create_task(wait_random(max_dealy))
         random_list.append(await task1)
     """
-    return await asyncio.gather(*[wait_random(max_dealy) for x in range(n)])
+    random_list = [asyncio.create_task(wait_random(max_dealy))
+                   for x in range(n)]
+
+    completed_tasks = []
+    for task in asyncio.as_completed(random_list):
+        completed_tasks.append(await task)
+
+    return completed_tasks
